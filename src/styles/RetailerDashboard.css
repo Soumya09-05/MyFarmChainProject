@@ -1,178 +1,283 @@
+/* =========================================================
+   1. GLOBAL STYLES & LAYOUT
+   ========================================================= */
+
 .retailer-dashboard {
+  font-family: 'Poppins', sans-serif; 
   padding: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-  font-family: "Inter", sans-serif;
-  background: #f9fafc;
+  background: #f8f9fa; 
+  min-height: 100vh;
 }
 
-.retailer-dashboard h1 {
-  color: #2c3e50;
-  margin-bottom: 10px;
-  font-size: 2rem;
+h1 {
+  color: #343a40;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
   font-weight: 700;
 }
 
-.retailer-dashboard > p {
-  color: #7f8c8d;
-  margin-bottom: 30px;
-  font-size: 1.05rem;
+h2 {
+    color: #495057;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 1.5rem;
 }
 
-/* Tabs */
+p {
+    color: #6c757d;
+}
+.btn-logout {
+    background: linear-gradient(90deg, #f43f5e, #f97316);
+    color: #fff;
+    border: none;
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);
+}
+
+.btn-logout:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(244, 63, 94, 0.4);
+}
+
+/* =========================================================
+   2. TABS NAVIGATION
+   ========================================================= */
+
 .tabs {
   display: flex;
-  border-bottom: 2px solid #eee;
-  margin-bottom: 25px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #dee2e6;
 }
 
 .tabs button {
-  padding: 12px 24px;
-  background: none;
+  padding: 10px 20px;
   border: none;
+  background-color: transparent;
+  color: #6c757d;
   cursor: pointer;
-  font-size: 16px;
+  transition: color 0.3s, border-bottom 0.3s;
+  font-size: 1rem;
   font-weight: 500;
-  color: #7f8c8d;
-  position: relative;
-  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px; 
 }
 
-.tabs button:hover {
-  color: #34495e;
-}
-
+/* Default Active Tab Color (for Distributor tabs) */
 .tabs button.active {
-  color: #3498db;
+  color: #007bff; /* Primary brand color (Blue) */
+  border-bottom: 2px solid #007bff;
   font-weight: 600;
 }
-
-.tabs button.active::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, #3498db, #6dd5fa);
+.tabs button:hover:not(.active) {
+    color: #495057;
 }
 
-/* Product Grid */
-.products-grid h2 {
-  margin-bottom: 20px;
-  color: #2c3e50;
-  font-size: 1.5rem;
-  font-weight: 600;
+/* 🌟 NEW: Customer Orders Tab Highlight */
+.tabs button[onClick*="customer-orders"].active {
+    color: #fd7e14; /* Orange for Customer-facing operations */
+    border-bottom: 2px solid #fd7e14;
 }
+
+
+/* =========================================================
+   3. PRODUCTS GRID & CARDS (Distributor Products)
+   ========================================================= */
 
 .products-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 24px;
-  margin-bottom: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
 }
 
 .product-card {
-  background: white;
+  background-color: #fff;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
 }
-
 .product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .product-card h3 {
-  margin: 0 0 10px 0;
-  color: #2c3e50;
-  font-size: 1.25rem;
+    margin: 0 0 5px 0;
+    color: #343a40;
+    font-size: 1.25rem;
+    font-weight: 600;
 }
-
 .product-card p {
-  margin: 6px 0;
-  color: #7f8c8d;
-  font-size: 0.95rem;
+    margin: 2px 0;
+    color: #495057;
 }
 
 .product-card button {
   margin-top: 15px;
-  padding: 10px 18px;
-  background: linear-gradient(90deg, #3498db, #6dd5fa);
-  color: white;
+  padding: 10px 15px;
+  background-color: #28a745; 
+  color: #fff;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 500;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s;
+}
+.product-card button:hover:not(:disabled) {
+    background-color: #218838;
+}
+.product-card button:disabled {
+    background-color: #6c757d; 
+    cursor: not-allowed;
 }
 
-.product-card button:hover {
-  transform: scale(1.05);
-  background: linear-gradient(90deg, #2980b9, #3498db);
-}
 
-/* Cart */
+/* =========================================================
+   4. SHOPPING CART SECTION
+   ========================================================= */
+
 .cart-section {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  margin-top: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
-.cart-items {
-  margin-bottom: 20px;
+/* ... (cart-items, cart-item, cart-total, place-order-btn styles remain the same) ... */
+
+
+/* =========================================================
+   5. DISTRIBUTOR ORDER HISTORY
+   ========================================================= */
+
+.order-history {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 0;
-  border-bottom: 1px solid #f0f0f0;
+.order-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid #007bff; /* Distributor History Highlight (Blue) */
 }
 
-.cart-item button {
-  padding: 6px 12px;
-  background: #e74c3c;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background 0.3s ease;
+/* ... (order-card details styles remain the same) ... */
+
+
+/* =========================================================
+   6. CUSTOMER ORDERS SECTION (NEW)
+   ========================================================= */
+
+.orders-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
 }
 
-.cart-item button:hover {
-  background: #c0392b;
+.customer-order-card {
+    border-left: 5px solid #fd7e14; /* Customer Order Highlight (Orange) */
+    /* Inherits .order-card styles */
 }
 
-.cart-total {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  text-align: right;
-  color: #2c3e50;
+.customer-order-card .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #495057;
 }
 
-.place-order-btn {
-  padding: 12px 28px;
-  background: linear-gradient(90deg, #27ae60, #6dd5a0);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  float: right;
-  transition: transform 0.2s ease, background 0.3s ease;
+.customer-order-card .order-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
 }
 
-.place-order-btn:hover {
-  transform: scale(1.05);
-  background: linear-gradient(90deg, #219653, #27ae60);
+.customer-order-card .btn-action {
+    flex-grow: 1;
+    background-color: #28a745; /* Green for action */
+}
+
+/* =========================================================
+   7. STATUS STYLING (Combined for both Distributor and Customer)
+   ========================================================= */
+
+.order-status {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-left: 10px;
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
+/* Distributor Statuses (Blue/Green Track) */
+.status-pending {
+    background-color: #ffe599; /* Light Yellow - Initial Retailer/Distributor Order */
+    color: #a67c00;
+}
+.status-processing {
+    background-color: #add8e6; /* Light Blue - Distributor is working on it */
+    color: #004d40;
+}
+.status-shipped {
+    background-color: #b7e4c7; /* Light Green */
+    color: #1a7431;
+}
+
+/* Shared/Customer Statuses (Orange/Teal Track) */
+.status-ready {
+    background-color: #ffdab9; /* Peach - Retailer ready for customer pickup */
+    color: #a0522d;
+}
+
+.status-delivered {
+    background-color: #a2d2ff; /* Light Blue - Final Status for all */
+    color: #00509d;
+}
+
+.order-card p strong {
+    margin-right: 5px; 
+}
+
+
+/* =========================================================
+   8. RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 768px) {
+    .retailer-dashboard {
+        padding: 15px;
+    }
+    .tabs {
+        flex-wrap: wrap;
+    }
+    .tabs button {
+        flex-grow: 1;
+        margin-bottom: 5px;
+        font-size: 0.9rem;
+    }
+    .orders-list {
+        grid-template-columns: 1fr;
+    }
 }

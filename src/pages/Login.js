@@ -1,13 +1,13 @@
-// pages/Login.js
-import React, { useState } from "react";
+import  { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { loginUser } from "./api";
-import "../styles/auth.css";
+import { loginUser } from "./api"; 
+import "../styles/Login.css";
 
 const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -39,41 +39,80 @@ const Login = ({ setUser }) => {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="auth-wrapper">
-      <div className="auth-box">
-        <h2>Welcome Back 👋</h2>
-        <p>Please login to continue</p>
-
-        <form onSubmit={handleLogin}>
-          <div className="input-group">
-            <label>Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+      <div className="auth-background">
+        <div className="floating-element"></div>
+        <div className="floating-element"></div>
+        <div className="floating-element"></div>
+        <div className="floating-element"></div>
+        <div className="floating-element"></div>
+      </div>
+      
+      
+      <div className="auth-container">
+        <div className="auth-box">
+          <div className="auth-header">
+            <h2>Welcome Back 👋</h2>
+            <p>Sign in to your account to continue</p>
           </div>
 
-          <div className="input-group">
-            <label>Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
+          <form onSubmit={handleLogin}>
+            <div className="input-group">
+              <label>Email Address</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="Enter your email"
+              />
+            </div>
 
-          <button className="btn-primary" type="submit" disabled={loading}>
-            {loading ? "Logging in..." : "Login"}
-          </button>
-        </form>
+            <div className="input-group">
+              <label>Password</label>
+              <div className="password-input-container">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  placeholder="Enter your password"
+                />
+                <button
+                  type="button"
+                  className="toggle-password"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? "🙈" : "👁️"}
+                </button>
+              </div>
+            </div>
 
-        <p className="switch-link">
-          Don’t have an account? <Link to="/register">Register</Link>
-        </p>
+            <div className="forgot-password">
+              <Link to="/forgot-password">Forgot your password?</Link>
+            </div>
+
+            <button className="btn-primary" type="submit" disabled={loading}>
+              {loading ? (
+                <>
+                  <span style={{ marginRight: '8px' }}>⏳</span>
+                  Signing in...
+                </>
+              ) : (
+                "Sign In"
+              )}
+            </button>
+          </form>
+
+          <p className="switch-link">
+            Don't have an account? <Link to="/register">Create account</Link>
+          </p>
+        </div>
       </div>
     </div>
   );

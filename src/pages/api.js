@@ -1,16 +1,20 @@
-// src/pages/api.js
 import axios from "axios";
 
-// Create a reusable Axios instance
+// Create a reusable secure Axios instance (attaches JWT token)
 export const API = axios.create({
   baseURL: "http://localhost:8080/api/users",
-  headers: { "Content-Type": "application/json" },
 });
+
+// 🌟 NEW: Create a public Axios instance that does NOT attach the token
+// We use this for the analyze-image endpoint to bypass security conflicts.
+export const PUBLIC_API = axios.create({
+  baseURL: "http://localhost:8080/api/users",
+});
+
 
 // Attach token automatically if available
 API.interceptors.request.use(
   (config) => {
-    // Read token from stored user object
     const user = JSON.parse(localStorage.getItem("user"));
     if (user?.token) {
       config.headers.Authorization = `Bearer ${user.token}`;
@@ -20,7 +24,7 @@ API.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Login function
+// Login function (uses API)
 export const loginUser = async (email, password) => {
   try {
     const response = await API.post("/login", { email, password });
@@ -28,7 +32,6 @@ export const loginUser = async (email, password) => {
 
     if (!user || !token) throw new Error("Invalid login response");
 
-    // Save token inside user object for consistency
     const userWithToken = { ...user, token };
     localStorage.setItem("user", JSON.stringify(userWithToken));
 
@@ -38,7 +41,7 @@ export const loginUser = async (email, password) => {
   }
 };
 
-// Register function
+// Register function (uses API)
 export const registerUser = async (userData) => {
   try {
     const response = await API.post("/register", userData);
@@ -50,5 +53,5 @@ export const registerUser = async (userData) => {
 
 // Logout function
 export const logoutUser = () => {
-  localStorage.removeItem("user"); // removes token as well
+  localStorage.removeItem("user");
 };

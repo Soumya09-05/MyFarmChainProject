@@ -18,13 +18,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import ProductDetail from "./pages/ProductDetail";
 import Unauthorized from "./pages/Unauthorized";
 import EditProductPage from "./pages/farmer-dashboard/EditProductPage";
-
-// Components
 import PrivateRoute from "./components/PrivateRoute";
-
-// Styles
-import "./styles/global.css";
-import "./styles/ProductDetail.css";
 
 function App() {
   const [products, setProducts] = useState([]);

@@ -1,208 +1,239 @@
+/* =========================================================
+   1. GLOBAL STYLES & LAYOUT
+   ========================================================= */
 .distributor-dashboard {
-  background-color: #b6b767;
-  padding: 30px;
-  max-width: 1300px;
-  margin: 0 auto;
-  font-family: "Inter", sans-serif;
-  color: #000000;
+    font-family: 'Inter', sans-serif; 
+    padding: 30px;
+    background: linear-gradient(to right, #e0f2fe, #fef3c7);
+    min-height: 100vh;
 }
 
-.distributor-dashboard h1 {
-  text-align: center;
-  text-decoration: underline;
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #465ab3;
-  margin-bottom: 10px;
+h1 {
+    color: #1e3a8a;
+    border-bottom: 2px solid #e0e7ff;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+    font-weight: 700;
 }
 
-.distributor-dashboard > p {
-  color: #ffffff;
-  margin-bottom: 30px;
-  font-size: 1.1rem;
+h2 {
+    color: #374151;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 1.5rem;
 }
 
-/* --- Tabs --- */
+p {
+    color: #6b7280;
+}
+
+/* --- Header & Logout Button --- */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.dashboard-title h1 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.dashboard-title p {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+.btn-logout {
+    background: linear-gradient(90deg, #f43f5e, #f97316);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);
+}
+
+.btn-logout:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(244, 63, 94, 0.4);
+}
+
+/* =========================================================
+   2. TABS NAVIGATION
+   ========================================================= */
 .tabs {
-  display: flex;
-  border-bottom: 2px solid #eaeaea;
-  margin-bottom: 25px;
-  background: #fff;
-  border-radius: 10px 10px 0 0;
-  overflow: hidden;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #d1d5db;
 }
 
 .tabs button {
-  flex: 1;
-  padding: 14px 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  color: #7f8c8d;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.tabs button:hover {
-  color: #000000;
+    padding: 10px 20px;
+    border: none;
+    background-color: transparent;
+    color: #6b7280;
+    cursor: pointer;
+    transition: color 0.3s, border-bottom 0.3s;
+    font-size: 1rem;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px; 
 }
 
 .tabs button.active {
-  color: #000000;
-  font-weight: 600;
-  background: linear-gradient(135deg, #f1f1f1, #6cacb8);
+    color: #1e3a8a;
+    border-bottom: 2px solid #1e3a8a;
+    font-weight: 600;
 }
 
-.tabs button.active::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: #000000;
-  border-radius: 2px;
-}
-
-/* --- Table Container --- */
+/* =========================================================
+   3. TABLE STYLES (ORDERS & INVENTORY)
+   ========================================================= */
 .table-container {
-  overflow-x: auto;
-  border-radius: 12px;
-  background: white;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease;
+    overflow-x: auto;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.table-container:hover {
-  transform: translateY(-2px);
-}
-
-/* --- Tables --- */
 .orders-table, .inventory-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.orders-table th, .orders-table td,
-.inventory-table th, .inventory-table td {
-  padding: 14px 18px;
-  text-align: left;
-  border-bottom: 1px solid #f0f0f0;
-  font-size: 15px;
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
 }
 
 .orders-table th, .inventory-table th {
-  background-color: #fafafa;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #636e72;
+    background: linear-gradient(90deg, #e0f2fe, #bae6fd);
+    color: #1e3a8a;
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 1px solid #d1d5db;
 }
 
-/* --- Status Badges --- */
+.orders-table td, .inventory-table td {
+    padding: 15px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #374151;
+    font-size: 0.9rem;
+}
+
+.orders-table tr:hover, .inventory-table tr:hover {
+    background-color: #f1f5f9;
+}
+
+.orders-table ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.orders-table li {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.no-orders {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================================================
+   4. STATUS BADGES
+   ========================================================= */
 .status-badge {
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 600;
-  display: inline-block;
-  text-transform: capitalize;
-  transition: transform 0.2s ease;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    display: inline-block;
 }
 
-.status-badge:hover {
-  transform: scale(1.05);
-}
+/* Order Status */
+.pending { background-color: #fef3c7; color: #a16207; }
+.processing { background-color: #bfdbfe; color: #1d4ed8; }
+.shipped { background-color: #d1fae5; color: #047857; }
+.fulfilled { background-color: #c7d2fe; color: #4338ca; }
 
-.status-badge.pending {
-  background: #fff4e6;
-  color: #e17055;
-}
+/* Inventory Status */
+.good { background-color: #d1fae5; color: #047857; }
+.low { background-color: #fee2e2; color: #b91c1c; }
 
-.status-badge.processing {
-  background: #e0fcff;
-  color: #00cec9;
-}
-
-.status-badge.shipped {
-  background: #eaf2ff;
-  color: #0984e3;
-}
-
-.status-badge.fulfilled {
-  background: #eafaf1;
-  color: #00b894;
-}
-
-.status-badge.low {
-  background: #ffeaea;
-  color: #d63031;
-}
-
-/* --- Action Buttons --- */
+/* =========================================================
+   5. ACTION BUTTONS
+   ========================================================= */
 .btn-action {
-  padding: 8px 16px;
-  background: linear-gradient(135deg, #3498db, #6c5ce7);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    background: linear-gradient(90deg, #4f46e5, #6366f1);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .btn-action:hover {
-  background: linear-gradient(135deg, #2980b9, #4834d4);
-  transform: translateY(-2px);
+    background: linear-gradient(90deg, #4338ca, #4f46e5);
 }
 
-/* --- Analytics Cards --- */
+/* =========================================================
+   6. ANALYTICS CARDS
+   ========================================================= */
 .analytics-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
 .stat-card {
-  background: white;
-  padding: 25px;
-  border-radius: 14px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-left: 6px solid #1e40af;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
 }
 
 .stat-card h3 {
-  margin: 0 0 12px 0;
-  color: #636e72;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    color: #6b7280;
+    font-weight: 500;
 }
 
 .stat-number {
-  font-size: 36px;
-  font-weight: 800;
-  color: #2d3436;
-  margin: 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #1e3a8a;
 }
 
-/* --- Empty State --- */
-.no-orders {
-  text-align: center;
-  padding: 50px;
-  color: #7f8c8d;
-  font-style: italic;
-  font-size: 1.1rem;
-  background: #fafafa;
-  border-radius: 10px;
+/* =========================================================
+   7. RESPONSIVE DESIGN
+   ========================================================= */
+@media (max-width: 768px) {
+    .distributor-dashboard { padding: 15px; }
+    .tabs { flex-wrap: wrap; }
+    .tabs button { flex-grow: 1; margin-bottom: 5px; font-size: 0.9rem; }
+    .dashboard-header { flex-direction: column; align-items: flex-start; }
+    .btn-logout { margin-top: 15px; }
 }

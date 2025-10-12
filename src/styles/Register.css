@@ -1,0 +1,262 @@
+/* === FarmXChain - Register Page Styles === */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap'); 
+
+/* --- Universal Styles & Background --- */
+.auth-wrapper {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a0b2e, #1f1f3d);
+  position: relative;
+  padding: 0;
+}
+
+.auth-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+/* --- Auth Container & Form Box --- */
+.auth-container {
+  position: relative;
+  z-index: 1;
+  padding: 10px;
+}
+.auth-box {
+  width: 450px;
+  background: rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 0px 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  color: #4026d6;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(249, 240, 240, 0.3);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-header h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.auth-header p {
+  color: #b0b0b0;
+  font-size: 0.95rem;
+}
+
+/* --- Form Elements --- */
+.input-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+.auth-box .input-group label { 
+  color: #ffffff; /* Use pure white for visibility */ 
+}
+.input-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ebebeb;
+  margin-bottom: 8px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 20px;
+  background: rgba(235, 235, 235, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #f2d9d9;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input::placeholder {
+  color: #cac0c0;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #00FFFF;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Password Validation Feedback --- */
+.input-group .password-mismatch {
+  border-color: #FF5A5A;
+  box-shadow: 0 0 15px rgba(255, 90, 90, 0.4);
+}
+
+.input-group .password-match {
+  border-color: #50C878;
+  box-shadow: 0 0 15px rgba(80, 200, 120, 0.4);
+}
+
+.validation-message.error {
+  color: #FF5A5A;
+  font-size: 0.85rem;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+}
+
+/* --- Roles Selection --- */
+.roles-group {
+  margin-bottom: 25px;
+}
+
+.roles-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #fefefe;
+  margin-bottom: 12px;
+}
+
+.roles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.roles label {
+  background: rgba(237, 228, 228, 0.15);
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.roles label:hover {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: rgba(0, 255, 255, 0.5);
+}
+
+.roles input[type="radio"] {
+  display: none;
+}
+
+.roles .radio-custom {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #aaa;
+  display: inline-block;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.roles input[type="radio"]:checked + .radio-custom {
+  background: #00FFFF;
+  border-color: #00FFFF;
+  box-shadow: 0 0 8px #00FFFF, inset 0 0 0 2px #1f1f3d;
+}
+
+/* Highlight entire label when selected */
+.roles input[type="radio"]:checked ~ span.label-text {
+  color: #00FFFF;
+  font-weight: 600;
+}
+
+.roles input[type="radio"]:checked {
+  outline: 2px solid #00FFFF;
+}
+
+/* --- Button & Link --- */
+.btn-primary {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(90deg, #7F00FF, #00AFFF);
+  background-size: 200% 100%;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 4px 15px rgba(127, 0, 255, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-position: 100% 0;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 175, 255, 0.4);
+}
+
+.btn-primary:disabled {
+  background: #555;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.switch-link {
+  text-align: center;
+  margin-top: 25px;
+  color: #b0b0b0;
+}
+
+.switch-link a {
+  color: #00FFFF;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+}
+
+.switch-link a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1.5px;
+  display: block;
+  margin-top: 2px;
+  right: 0;
+  background: #00FFFF;
+  transition: width 0.3s ease;
+}
+
+.switch-link a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 480px) {
+  .auth-box {
+    width: 100%;
+    padding: 30px;
+    border-radius: 15px;
+  }
+  .auth-header h2 {
+    font-size: 1.8rem;
+  }
+  .roles {
+    grid-template-columns: 1fr;
+  }
+}

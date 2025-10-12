@@ -60,7 +60,6 @@ function AddProductPage({ addProduct }) {
     if (addProduct) {
       addProduct(newProduct);
     }
-
     navigate("/farmer-dashboard");
   };
 

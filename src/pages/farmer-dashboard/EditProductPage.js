@@ -111,7 +111,7 @@ function EditProductPage({ products, setProducts }) {
         </div>
         <div className="form-actions">
           <button type="submit" className="submit-btn">Save Changes</button>
-          <button type="button" className="back-btn" onClick={() => navigate("/products")}>Back</button>
+          <button type="button" className="back-btn" onClick={(handleBack) => navigate("/products")}>Back</button>
         </div>
       </form>
     </div>

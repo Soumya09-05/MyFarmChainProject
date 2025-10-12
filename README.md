@@ -15,6 +15,12 @@ FarmChainX-AI-Driven-Agricultural-Traceability-Network/
 ├─ frontend/ # React frontend
 └─ backend/ # Spring Boot backend (Eclipse project)
 
+<<<<<<< HEAD
+=======
+yaml
+Copy code
+
+>>>>>>> 8c690be (Updated UI)
 ---
 
 ## ⚙️ Tech Stack
@@ -33,7 +39,11 @@ FarmChainX-AI-Driven-Agricultural-Traceability-Network/
 1. Open terminal in the `frontend` folder:
 
 ```bash
+<<<<<<< HEAD
 
+=======
+cd frontend
+>>>>>>> 8c690be (Updated UI)
 Install dependencies:
 
 
@@ -74,4 +84,8 @@ The frontend communicates with backend APIs at http://localhost:8080.
 💡 Notes
 Ensure ports 3000 (frontend) and 8080 (backend) are free.
 
+<<<<<<< HEAD
 The backend must be running for the frontend features to work properly.
+=======
+The backend must be running for the frontend features to work properly.
+>>>>>>> 8c690be (Updated UI)

@@ -1,15 +1,26 @@
-/* ================================
+/* =========================================================
+   Global Imports and Font
+========================================================= */
+/* Import a modern, clean Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* =========================================================
    Products Page Container
-================================ */
+========================================================= */
 .products-container {
   width: 100%;
   min-height: 100vh;
-  padding: 20px;
+  padding: 30px; /* Increased padding */
   box-sizing: border-box;
-  overflow-x: auto;
-  background: linear-gradient(135deg, #fceabb, #f8b500, #ff7e5f, #feb47b);
+  overflow-x: hidden;
+  /* Updated Background: Deep Forest Green & Vibrant Lime */
+  background: linear-gradient(135deg, #1b5e20, #4caf50, #8bc34a, #d4e157);
   background-size: 300% 300%;
-  animation: bgAnimation 15s ease infinite;
+  animation: bgAnimation 30s ease infinite;
 }
 
 /* Background animation */
@@ -19,196 +30,338 @@
   100% { background-position: 0% 50%; }
 }
 
-/* ================================
+/* =========================================================
    Page Title
-================================ */
+========================================================= */
 .page-title {
   text-align: center;
-  margin-bottom: 20px;
-  font-size: 2.5rem;
-  font-weight: bold;
+  margin-bottom: 30px;
+  font-size: 3rem; /* Larger font */
+  font-weight: 800;
   color: #ffffff;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-  letter-spacing: 2px;
+  /* Sophisticated shadow */
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5); 
+  letter-spacing: 3px;
 }
 
-/* ================================
-   Empty Message
-================================ */
-.empty-msg {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #444;
-}
-
-h2, p {
-  text-align: center;
-  color: #333;
-}
-
-/* ================================
+/* =========================================================
    Header Section (Search + Buttons)
-================================ */
+========================================================= */
 .page-header {
   display: flex;
-  justify-content: space-between; /* search left, buttons right */
+  justify-content: space-between; 
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px;
 }
 
 /* Search Bar */
 .search-bar {
   display: flex;
   align-items: center;
-  gap: 8px;
-  flex: 1;
+  flex-grow: 1; /* Allow it to take available space */
+  max-width: 400px;
 }
 
 .search-bar input,
 .search-input {
-  padding: 10px 14px;
-  border: 2px solid #ff9800;
-  border-radius: 8px;
+  padding: 12px 18px; /* Slightly larger input */
+  border: none; /* Remove border */
+  border-radius: 10px;
   font-size: 1rem;
-  width: 280px;
+  width: 100%;
   max-width: 100%;
-  transition: 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: 0.4s ease;
+  color: #333;
 }
 
 .search-bar input:focus,
 .search-input:focus {
-  border-color: #e91e63;
-  outline: none;
-  box-shadow: 0 0 8px rgba(233, 30, 99, 0.6);
+  background-color: white;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+  outline: 3px solid #ffeb3b; /* Vibrant focus outline */
 }
 
 /* Header Buttons Group */
 .header-buttons {
   display: flex;
-  gap: 12px;
+  gap: 15px;
 }
 
-/* Add & Logout Buttons */
+/* Add & Logout Buttons (Enhanced Styling) */
 .add-btn,
 .logout-btn {
   border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
+  padding: 12px 22px; /* Uniform padding */
+  border-radius: 10px;
   cursor: pointer;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 700;
   color: white;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .add-btn {
-  background: linear-gradient(45deg, #ff6f61, #ff4081);
+  /* Vibrant Green/Orange Gradient */
+  background: linear-gradient(90deg, #ff9800, #ff5722);
 }
 
 .add-btn:hover {
-  background: linear-gradient(45deg, #ff4081, #ff1744);
-  transform: scale(1.05);
+  background: linear-gradient(90deg, #ff5722, #e64a19);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(255, 87, 34, 0.5);
 }
 
 .logout-btn {
-  background: linear-gradient(45deg, #29b6f6, #0288d1);
+  /* Subtle, Professional Blue Gradient */
+  background: linear-gradient(90deg, #607d8b, #455a64);
 }
 
 .logout-btn:hover {
-  background: linear-gradient(45deg, #0288d1, #01579b);
-  transform: scale(1.05);
+  background: linear-gradient(90deg, #455a64, #37474f);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(96, 125, 139, 0.5);
 }
 
-/* ================================
-   Table Wrapper
-================================ */
+/* =========================================================
+   Loading / Empty State
+========================================================= */
+
+.loading, .empty-state {
+    text-align: center;
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    color: #333;
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.empty-state h2 {
+    color: #d32f2f;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.empty-state .add-btn {
+    /* Reusing the add-btn style for the CTA button */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 30px;
+}
+
+/* =========================================================
+   Products Table
+========================================================= */
 .table-wrapper {
   width: 100%;
   overflow-x: auto;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .products-table {
   width: 100%;
-  min-width: 800px;
-  border-collapse: collapse;
+  min-width: 1100px; /* Ensure readability on complex data */
+  border-collapse: separate; /* Use separate for rounded corners on cells */
+  border-spacing: 0;
   background: white;
-  border-radius: 12px;
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   animation: fadeIn 1s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 .products-table th,
 .products-table td {
-  border: 1px solid #ddd;
-  padding: 14px;
+  border: none; /* Removed individual borders for cleaner look */
+  padding: 16px 10px; /* Increased padding */
   text-align: center;
   white-space: nowrap;
+  font-size: 0.95rem;
+  color: #333;
 }
 
 .products-table th {
-  background: linear-gradient(45deg, #8e44ad, #3498db);
+  /* New Table Header Gradient: Dark and authoritative */
+  background: linear-gradient(90deg, #004d40, #1b5e20); 
   color: white;
   text-transform: uppercase;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  font-weight: 700;
   letter-spacing: 1px;
 }
 
-.products-table tr:nth-child(even) {
-  background-color: #f3f3f3;
+/* Striping */
+.products-table tbody tr:nth-child(odd) {
+  background-color: #f7f7f7;
 }
 
-.products-table tr:hover {
-  background-color: #fbe9e7;
-  transition: 0.3s ease;
+.products-table tbody tr:hover {
+  background-color: #e8f5e9; /* Light green hover */
+  transform: scaleY(1.01); /* Subtle 3D effect on hover */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
 
 .product-img {
-  width: 70px;
-  height: 70px;
+  width: 80px; /* Slightly larger image */
+  height: 80px;
   object-fit: cover;
-  border-radius: 10px;
-  border: 2px solid #eee;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  border-radius: 12px;
+  border: 3px solid #f0f4c3; /* Light, complementary border */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* ================================
+.no-image {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    background-color: #e0e0e0;
+    color: #757575;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 0 auto;
+}
+
+/* =========================================================
+   QR Code Styling
+========================================================= */
+.qr-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.product-id {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #4caf50;
+    letter-spacing: 0.5px;
+}
+
+.qr-btn {
+    background-color: #ffb300; /* Amber for download */
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.qr-btn:hover {
+    background-color: #ffa000;
+    transform: translateY(-1px);
+}
+
+/* Hide the canvas border */
+#qrcode- * canvas {
+    border-radius: 5px;
+}
+
+
+/* =========================================================
    Actions
-================================ */
+========================================================= */
+.actions-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
 .actions-cell button {
-  margin-right: 10px;
-  padding: 8px 14px;
-  border-radius: 6px;
+  width: 100px; /* Fixed width for better alignment */
+  padding: 10px 0;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
   color: #fff;
   transition: 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
 .edit-btn {
-  background: linear-gradient(45deg, #4caf50, #2e7d32);
+  /* Bright Green for Edit */
+  background: linear-gradient(90deg, #8bc34a, #4caf50);
 }
 
 .edit-btn:hover {
-  background: linear-gradient(45deg, #2e7d32, #1b5e20);
-  transform: scale(1.05);
+  background: linear-gradient(90deg, #4caf50, #388e3c);
 }
 
 .delete-btn {
-  background: linear-gradient(45deg, #f44336, #c62828);
+  /* Classic Red for Delete */
+  background: linear-gradient(90deg, #ef5350, #d32f2f);
 }
 
 .delete-btn:hover {
-  background: linear-gradient(45deg, #c62828, #b71c1c);
-  transform: scale(1.05);
+  background: linear-gradient(90deg, #d32f2f, #b71c1c);
+}
+
+/* =========================================================
+   Responsive Design
+========================================================= */
+@media (max-width: 900px) {
+  .products-container {
+    padding: 15px;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-bar {
+    width: 100%;
+    max-width: 100%;
+    order: 2; /* Move search below buttons on mobile */
+  }
+
+  .search-bar input,
+  .search-input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .header-buttons {
+    order: 1; /* Move buttons above search on mobile */
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .add-btn,
+  .logout-btn {
+    flex: 1; /* Make buttons share space equally */
+  }
+  
+  /* Make table look better on smaller screens by focusing on scroll */
+  .products-table {
+    min-width: 1000px; /* Ensure table remains wide enough */
+  }
 }
