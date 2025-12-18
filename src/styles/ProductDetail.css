@@ -1,158 +1,190 @@
-/* ================================
-   Product Detail Page
-================================ */
+/* =========================================================
+   Premium Product Intelligence - Organic Midnight Theme
+   Focus: Split-Layout, Micro-Interactions & Glass UI
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --detail-primary: #10b981; 
+  --detail-dark: #0f172a;    
+  --detail-bg: #f8fafc;
+  --detail-glass: rgba(15, 23, 42, 0.98);
+  --detail-border: #e2e8f0;
+  --shadow-massive: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
+}
+
 .product-detail {
-  padding: 20px;
   min-height: 100vh;
-  background: linear-gradient(135deg, #4facfe, #00f2fe); /* elegant aqua-blue gradient */
+  padding: 60px 20px;
+  background-color: var(--detail-bg);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.05) 0px, transparent 40%),
+    radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.05) 0px, transparent 40%);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Outfit', sans-serif;
 }
 
 /* ================================
-   Product Card
+   Product Card (Split Layout)
 ================================ */
 .product-detail-card {
-  background: rgba(255, 255, 255, 0.97);
-  padding: 35px;
-  border-radius: 18px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  max-width: 550px;
+  background: white;
+  border-radius: 40px;
+  box-shadow: var(--shadow-massive);
+  max-width: 1000px; /* Wider for split view */
   width: 100%;
-  transition: transform 0.2s ease-in-out;
+  overflow: hidden;
+  display: flex; /* Side-by-side on desktop */
+  border: 1px solid var(--detail-border);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .product-detail-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
 }
 
-.product-detail-card h1 {
-  text-align: center;
-  color: #1e3c72;
-  margin-bottom: 25px;
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-/* ================================
-   Product Image
-================================ */
+/* Left Side: Image Section */
 .product-image {
-  text-align: center;
-  margin-bottom: 25px;
+  flex: 1;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
 }
 
 .product-image img {
-  max-width: 100%;
-  max-height: 260px;
-  border-radius: 14px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 25px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  transition: transform 0.5s ease;
 }
 
 .product-image img:hover {
-  transform: scale(1.05);
+  transform: scale(1.08) rotate(1deg);
+}
+
+/* Right Side: Info Section */
+.product-content {
+  flex: 1.2;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-content h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--detail-dark);
+  margin-bottom: 20px;
+  letter-spacing: -1px;
 }
 
 /* ================================
-   Product Info
+   Information Grid
 ================================ */
 .product-info {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .info-row {
   display: flex;
-  justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid #eaeaea;
-}
-
-.info-row:last-child {
-  border-bottom: none;
+  flex-direction: column; /* Stacked for a cleaner look */
+  padding: 15px 0;
+  border-bottom: 1px solid #f1f5f9;
 }
 
 .label {
-  font-weight: 600;
-  color: #2d3748;
-  font-size: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
 }
 
 .value {
-  color: #4a5568;
-  text-align: right;
-  max-width: 60%;
-  font-size: 15px;
-}
-
-/* ================================
-   Map Link
-================================ */
-.map-link {
-  display: inline-block;
-  margin-top: 8px;
-  color: #0077b6;
-  text-decoration: none;
-  font-size: 14px;
+  font-size: 1.1rem;
+  color: var(--detail-dark);
   font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.map-link:hover {
-  color: #023e8a;
-  text-decoration: underline;
 }
 
 /* ================================
-   Verification Badge
-================================ */
+   Premium Verification Badge
+=============================== */
 .verification-badge {
-  text-align: center;
-  padding: 12px;
-  background: linear-gradient(135deg, #11998e, #38ef7d);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
   color: white;
-  border-radius: 10px;
-  margin-top: 25px;
+  border-radius: 20px;
+  margin-top: auto;
   font-weight: 600;
-  font-size: 15px;
-  letter-spacing: 0.3px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.1);
+}
+
+/* Glowing Checkmark Dot */
+.verification-badge::before {
+  content: '✓';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--detail-primary);
+  border-radius: 50%;
+  font-size: 14px;
+  box-shadow: 0 0 15px var(--detail-primary);
 }
 
 /* ================================
-   Loading & Error States
+   Professional Loading State
 ================================ */
-.product-detail-loading,
-.product-detail-error {
+.product-detail-loading {
+  height: 100vh;
+  background: var(--detail-bg);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  font-size: 18px;
-  color: white;
-  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  gap: 20px;
+}
+
+.loader-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e2e8f0;
+  border-top: 4px solid var(--detail-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 /* ================================
-   Responsive Design
+   Responsive Adjustments
 ================================ */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .product-detail-card {
-    margin: 15px;
-    padding: 25px;
-  }
-
-  .info-row {
     flex-direction: column;
-    align-items: flex-start;
+    margin: 20px;
+  }
+  
+  .product-image img {
+    height: 300px;
   }
 
-  .value {
-    max-width: 100%;
-    text-align: left;
-    margin-top: 5px;
+  .product-content {
+    padding: 30px;
   }
 }

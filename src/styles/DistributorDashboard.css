@@ -1,239 +1,186 @@
 /* =========================================================
-   1. GLOBAL STYLES & LAYOUT
+   Premium Distributor Nexus - Organic Midnight Theme
+   Enhanced Logistics & Order Management
    ========================================================= */
-.distributor-dashboard {
-    font-family: 'Inter', sans-serif; 
-    padding: 30px;
-    background: linear-gradient(to right, #e0f2fe, #fef3c7);
-    min-height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --dist-primary: #10b981; 
+  --dist-dark: #0f172a;    
+  --dist-accent: #6366f1;  
+  --dist-bg: #f8fafc;
+  --dist-glass: rgba(15, 23, 42, 0.95);
+  --dist-border: #eef2f6;
+  --shadow-elevated: 0 20px 40px rgba(15, 23, 42, 0.08);
 }
 
-h1 {
-    color: #1e3a8a;
-    border-bottom: 2px solid #e0e7ff;
-    padding-bottom: 10px;
-    margin-bottom: 5px;
-    font-weight: 700;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-h2 {
-    color: #374151;
-    margin-top: 20px;
-    margin-bottom: 25px;
-    font-weight: 600;
-    font-size: 1.5rem;
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--dist-bg);
+  color: var(--dist-dark);
 }
 
-p {
-    color: #6b7280;
+.dashboard-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
-/* --- Header & Logout Button --- */
+/* ==================== HIGH-VISIBILITY HEADER ==================== */
 .dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 45px;
+  background: var(--dist-glass);
+  backdrop-filter: blur(15px);
+  border-radius: 24px;
+  margin-bottom: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.dashboard-title h1 {
-    font-size: 2rem;
-    margin-bottom: 5px;
+.dashboard-header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  background: linear-gradient(135deg, #ffffff 40%, var(--dist-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 0;
 }
 
-.dashboard-title p {
-    color: #6b7280;
-    font-size: 0.95rem;
-}
-
-.btn-logout {
-    background: linear-gradient(90deg, #f43f5e, #f97316);
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);
-}
-
-.btn-logout:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(244, 63, 94, 0.4);
-}
-
-/* =========================================================
-   2. TABS NAVIGATION
-   ========================================================= */
-.tabs {
-    display: flex;
-    margin-top: 20px;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #d1d5db;
-}
-
-.tabs button {
-    padding: 10px 20px;
-    border: none;
-    background-color: transparent;
-    color: #6b7280;
-    cursor: pointer;
-    transition: color 0.3s, border-bottom 0.3s;
-    font-size: 1rem;
-    font-weight: 500;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -2px; 
-}
-
-.tabs button.active {
-    color: #1e3a8a;
-    border-bottom: 2px solid #1e3a8a;
-    font-weight: 600;
-}
-
-/* =========================================================
-   3. TABLE STYLES (ORDERS & INVENTORY)
-   ========================================================= */
-.table-container {
-    overflow-x: auto;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.orders-table, .inventory-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 800px;
-}
-
-.orders-table th, .inventory-table th {
-    background: linear-gradient(90deg, #e0f2fe, #bae6fd);
-    color: #1e3a8a;
-    padding: 12px 15px;
-    text-align: left;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    border-bottom: 1px solid #d1d5db;
-}
-
-.orders-table td, .inventory-table td {
-    padding: 15px;
-    border-bottom: 1px solid #e5e7eb;
-    color: #374151;
-    font-size: 0.9rem;
-}
-
-.orders-table tr:hover, .inventory-table tr:hover {
-    background-color: #f1f5f9;
-}
-
-.orders-table ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.orders-table li {
-    font-size: 0.85rem;
-    color: #6b7280;
-}
-
-.no-orders {
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-/* =========================================================
-   4. STATUS BADGES
-   ========================================================= */
-.status-badge {
-    padding: 5px 10px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    display: inline-block;
-}
-
-/* Order Status */
-.pending { background-color: #fef3c7; color: #a16207; }
-.processing { background-color: #bfdbfe; color: #1d4ed8; }
-.shipped { background-color: #d1fae5; color: #047857; }
-.fulfilled { background-color: #c7d2fe; color: #4338ca; }
-
-/* Inventory Status */
-.good { background-color: #d1fae5; color: #047857; }
-.low { background-color: #fee2e2; color: #b91c1c; }
-
-/* =========================================================
-   5. ACTION BUTTONS
-   ========================================================= */
-.btn-action {
-    background: linear-gradient(90deg, #4f46e5, #6366f1);
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-}
-
-.btn-action:hover {
-    background: linear-gradient(90deg, #4338ca, #4f46e5);
-}
-
-/* =========================================================
-   6. ANALYTICS CARDS
-   ========================================================= */
-.analytics-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+/* ==================== ANALYTICS STATS ==================== */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
 }
 
 .stat-card {
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    border-left: 6px solid #1e40af;
-    transition: transform 0.3s, box-shadow 0.3s;
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  border: 1px solid var(--dist-border);
+  box-shadow: var(--shadow-elevated);
+  transition: transform 0.3s ease;
 }
 
-.stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+.stat-card:hover { transform: translateY(-5px); }
+
+.stat-label { font-size: 0.85rem; color: #64748b; font-weight: 600; text-transform: uppercase; }
+.stat-value { font-size: 2rem; font-weight: 800; color: var(--dist-dark); display: block; margin-top: 5px; }
+
+/* ==================== LOGISTICS TABLES (ANTI-DESHAPE) ==================== */
+.table-container {
+  background: white;
+  border-radius: 24px;
+  padding: 10px;
+  border: 1px solid var(--dist-border);
+  box-shadow: var(--shadow-elevated);
+  overflow: hidden;
 }
 
-.stat-card h3 {
-    margin: 0 0 10px 0;
-    font-size: 1rem;
-    color: #6b7280;
-    font-weight: 500;
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
-.stat-number {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #1e3a8a;
+th {
+  background: #f8fafc;
+  padding: 18px 20px;
+  text-align: left;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--dist-bg);
 }
 
-/* =========================================================
-   7. RESPONSIVE DESIGN
-   ========================================================= */
-@media (max-width: 768px) {
-    .distributor-dashboard { padding: 15px; }
-    .tabs { flex-wrap: wrap; }
-    .tabs button { flex-grow: 1; margin-bottom: 5px; font-size: 0.9rem; }
-    .dashboard-header { flex-direction: column; align-items: flex-start; }
-    .btn-logout { margin-top: 15px; }
+td {
+  padding: 20px;
+  border-bottom: 1px solid var(--dist-border);
+  font-size: 0.95rem;
+  color: var(--dist-dark);
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+tr:last-child td { border-bottom: none; }
+
+/* Fixed Width Status Pills */
+.status-pill {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-align: center;
+  min-width: 100px; /* Keeps them from de-shaping */
+}
+
+.pending { background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
+.processing { background: #eff6ff; color: #1d4ed8; border: 1px solid #dbeafe; }
+.shipped { background: #f0fdf4; color: #15803d; border: 1px solid #dcfce7; }
+
+/* ==================== COMPACT ACTION BUTTONS ==================== */
+.btn-action {
+  background: var(--dist-dark);
+  color: white;
+  padding: 8px 16px;
+  height: 34px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.btn-action:hover {
+  background: var(--dist-primary);
+  transform: translateY(-1px);
+}
+
+/* ==================== BENTO TABS ==================== */
+.tabs-container {
+  display: flex;
+  gap: 10px;
+  background: #e2e8f0;
+  padding: 6px;
+  border-radius: 16px;
+  margin-bottom: 30px;
+  width: fit-content;
+}
+
+.tab-btn {
+  padding: 10px 24px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background: white;
+  color: var(--dist-dark);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1024px) {
+  .table-container { overflow-x: auto; }
+  table { min-width: 800px; }
 }

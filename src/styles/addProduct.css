@@ -379,3 +379,13 @@ h2,p{
     width: 100%;
   }
 }
+/* Footer */
+.site-footer {
+  margin-top: 40px;
+  padding: 15px 0;
+  text-align: center;
+  background: #f5f5f5;
+  color: #333;
+  font-size: 0.9rem;
+  border-top: 1px solid #ddd;
+}
