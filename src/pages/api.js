@@ -2,13 +2,13 @@ import axios from "axios";
 
 // Create a reusable secure Axios instance (attaches JWT token)
 export const API = axios.create({
-  baseURL: "http://localhost:8080/api/users",
+  baseURL: "http://localhost:8082/api/users",
 });
 
 // 🌟 NEW: Create a public Axios instance that does NOT attach the token
 // We use this for the analyze-image endpoint to bypass security conflicts.
 export const PUBLIC_API = axios.create({
-  baseURL: "http://localhost:8080/api/users",
+  baseURL: "http://localhost:8082/api/users",
 });
 
 

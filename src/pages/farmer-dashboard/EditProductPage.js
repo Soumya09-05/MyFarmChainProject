@@ -56,7 +56,7 @@ function EditProductPage({ products, setProducts }) {
     if (form.imageFile) formData.append("image", form.imageFile);
 
     try {
-      const res = await fetch(`http://localhost:8080/api/products/edit/${id}`, {
+      const res = await fetch(`http://localhost:8082/api/products/edit/${id}`, {
         method: "PUT",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,

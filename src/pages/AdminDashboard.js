@@ -64,7 +64,7 @@ const AdminDashboard = () => {
             }
         } else {
             // Network failure (server down, CORS block, or unhandled request error)
-            setError("Failed to connect to server. Check if Spring Boot is running on localhost:8080.");
+            setError("Failed to connect to server. Check if Spring Boot is running on localhost:8082.");
         }
         
       } finally {
